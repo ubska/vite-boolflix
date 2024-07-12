@@ -10,7 +10,8 @@ export default {
   name: 'App',
   components: {
     AppHeader,
-    AppMain
+    AppMain,
+    
   }
 }
 </script>
@@ -18,7 +19,9 @@ export default {
 <template>
 
   <AppHeader message = 'BOOLFIX'/>
-  <AppMain/>
+  <main>
+      <AppMain/>
+  </main>
 </template>
 
 <style scoped>
