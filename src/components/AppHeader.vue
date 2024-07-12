@@ -2,6 +2,7 @@
 import { store } from '../store';
 export default {
     name: 'AppHeader',
+    props: {message: String},
     data() {
         return {
              store
@@ -12,7 +13,7 @@ export default {
 
 <template>
     <div class="container">
-        <h1>Boolfix</h1>
+        <h1>{{ message }}</h1>
         <div>
             <input type="text" placeholder="Search">
             <button>Search</button>

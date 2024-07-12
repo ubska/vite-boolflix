@@ -4,18 +4,21 @@ import axios from 'axios';
 import { store } from './store';
 
 import AppHeader from './components/AppHeader.vue'
+import AppMain from './components/AppMain.vue';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
+    AppMain
   }
 }
 </script>
 
 <template>
 
-  <AppHeader/>
+  <AppHeader message = 'BOOLFIX'/>
+  <AppMain/>
 </template>
 
 <style scoped>
