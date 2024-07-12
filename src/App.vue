@@ -1,10 +1,21 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import axios from 'axios';
+import { store } from './store';
+
+import AppHeader from './components/AppHeader.vue'
+
+export default {
+  name: 'App',
+  components: {
+    AppHeader,
+  }
+}
 </script>
 
 <template>
 
-  <HelloWorld msg="Vite + Vue" />
+  <AppHeader/>
 </template>
 
 <style scoped>
