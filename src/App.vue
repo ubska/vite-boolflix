@@ -1,10 +1,11 @@
 <script>
 
-import axios from 'axios';
-import { store } from './store';
+import axios  from 'axios';
 
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue';
+// import dello store
+import { store } from './store';
 
 export default {
   name: 'App',
@@ -12,6 +13,28 @@ export default {
     AppHeader,
     AppMain,
     
+  },
+  data() {
+    return {
+      store,
+    }
+  },
+  methods: {
+    gerMovieCard() {
+      axios.
+        get(store.movieUrl)
+        .then(res => {
+          console.log(res.data.results);
+          store.movieList = res.data.results;
+        })
+        .catch (
+          err => {
+          console.log(err);
+        })
+    }
+  },
+  created() {
+    this.gerMovieCard();
   }
 }
 </script>
