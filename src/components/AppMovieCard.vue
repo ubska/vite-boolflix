@@ -15,8 +15,12 @@ export default {
 
 <template>
     <div class="movie-card">
-        <img :src="getPosterUrl(info.poster_path)" :alt="info.title">
+        <img :src="getPosterUrl(info.poster_path)" :alt="info.title" class="poster">
         <h1>{{info.title }}</h1>
+        <div class="description">
+          <h2>{{ info.title }}</h2>
+          <p>{{ info.overview }}</p>
+        </div>
         <!-- <p>{{ info.overview }}</p> -->
     </div>
 </template>
@@ -29,24 +33,42 @@ export default {
 .movie-card {
   width: 350px;
   border: 1px solid #ccc;
-  padding: 1rem;
   border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
   text-align: center;
+  cursor: pointer;
 
   img {
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
+    transition: opacity 0.3s;
   }
 
-  h1 {
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
+  .description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
-  p {
-    font-size: 1rem;
-    color: #666;
+  &:hover .poster {
+    opacity: 0;
+  }
+
+  &:hover .description {
+    opacity: 1;
   }
 }
 </style>
