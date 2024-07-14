@@ -21,8 +21,17 @@ export default {
   },
   methods: {
     gerMovieCard() {
+      let endPoint = store.movieUrl;
+
+      // se si avvia una ricerca da appserch aggiungiamo la query di richiesta
+      if (store.searchMovie !== '') {
+        endPoint += `?movie=${store.searchMovie}`
+      }
+
+
+
       axios.
-        get(store.movieUrl)
+        get(endPoint)
         .then(res => {
           console.log(res.data.results);
           store.movieList = res.data.results;
@@ -41,7 +50,7 @@ export default {
 
 <template>
 
-  <AppHeader message = 'BOOLFIX'/>
+  <AppHeader message = 'BOOLFIX' @search="gerMovieCard"/>
   <main>
       <AppMain/>
   </main>

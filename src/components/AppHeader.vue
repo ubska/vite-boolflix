@@ -5,9 +5,10 @@ export default {
     props: {message: String},
     data() {
         return {
-             store
+            store,
+             
         }
-     },
+    },
 }
 </script>
 
@@ -15,8 +16,8 @@ export default {
     <div class="container">
         <h1>{{ message }}</h1>
         <div>
-            <input type="text" placeholder="Search">
-            <button>Search</button>
+            <input  v-model="store.searchMovie" type="text" placeholder="Search">
+            <button @click.prevent= "$emit('search')">Search</button>
         </div>
     </div>
     
