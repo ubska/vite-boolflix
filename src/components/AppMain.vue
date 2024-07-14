@@ -12,12 +12,13 @@ export default {
             store,
         };
     },
+
 };
 </script>
 
 <template>
     <div class="container">
-        <div>
+        <div class="container">
              <!-- componente card dei film -->
             <div class="card" v-for="movie in store.movieList" :key="movie.id">
             <AppMovieCard :info="movie"/>

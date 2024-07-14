@@ -5,8 +5,8 @@ export default {
         info: Object,
     },
     methods: {
-        imageUrl() {
-            return `https://image.tmdb.org/t/p/w342{this.info.poster_path}`;
+        getPosterUrl(path) {
+            return `https://image.tmdb.org/t/p/w342${path}`;
         },
     }
 }
@@ -15,9 +15,9 @@ export default {
 
 <template>
     <div class="movie-card">
-        <img :src="imageUrl" :alt="info.title">
+        <img :src="getPosterUrl(info.poster_path)" :alt="info.title">
         <h1>{{info.title }}</h1>
-        <p>{{ info.overview }}</p>
+        <!-- <p>{{ info.overview }}</p> -->
     </div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
 
 
 .movie-card {
+  width: 350px;
   border: 1px solid #ccc;
   padding: 1rem;
   border-radius: 0.5rem;

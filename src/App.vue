@@ -22,10 +22,12 @@ export default {
   methods: {
     gerMovieCard() {
       let endPoint = store.movieUrl;
+      let endPointS = store.seriesUrl;
 
       // se si avvia una ricerca da appserch aggiungiamo la query di richiesta
       if (store.searchMovie !== '') {
         endPoint += `?movie=${store.searchMovie}`
+      
       }
 
 
