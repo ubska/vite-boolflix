@@ -18,7 +18,9 @@ export default {
         <img :src="getPosterUrl(info.poster_path)" :alt="info.title" class="poster">
         <h1>{{info.title }}</h1>
         <div class="description">
-          <h2>{{ info.title }}</h2>
+          <h2>TITOLO:{{ info.title }}</h2>
+          <h2>TITOLO ORIGINALE:{{ info.original_title }}</h2>
+          <h2>VOTO:{{ info.vote_average }}</h2>
           <p>{{ info.overview }}</p>
         </div>
         <!-- <p>{{ info.overview }}</p> -->

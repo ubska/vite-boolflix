@@ -23,6 +23,9 @@ export default {
             <div class="card" v-for="movie in store.movieList" :key="movie.id">
             <AppMovieCard :info="movie"/>
         </div>
+        <div class="card" v-for="series in store.seriesList" :key="series.id">
+        <AppMovieCard :info="series" />
+      </div>
     </div>
        
          

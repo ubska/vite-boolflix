@@ -22,27 +22,29 @@ export default {
   methods: {
     gerMovieCard() {
       let endPoint = store.movieUrl;
-      let endPointS = store.seriesUrl;
+      let seriesEndPoint = store.seriesUrl;
 
       // se si avvia una ricerca da appserch aggiungiamo la query di richiesta
       if (store.searchMovie !== '') {
-        endPoint += `?movie=${store.searchMovie}`
+        endPoint += `?movie=${store.searchMovie}`;
+        seriesEndPoint += `?movie=${store.searchMovie}`;
       
       }
 
 
 
-      axios.
-        get(endPoint)
-        .then(res => {
-          console.log(res.data.results);
-          store.movieList = res.data.results;
-        })
-        .catch (
-          err => {
-          console.log(err);
-        })
-    }
+      Promise.all([
+        axios.get(endPoint),
+        axios.get(seriesEndPoint)
+      ])
+      .then(responses => {
+        store.movieList = responses[0].data.results;
+        store.seriesList = responses[1].data.results;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    },
   },
   created() {
     this.gerMovieCard();
