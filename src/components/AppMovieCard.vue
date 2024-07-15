@@ -1,6 +1,8 @@
 <script>
 import flagEn from '../assets/flags/en.png';
 import flagIT from '../assets/flags/it.png';
+import flagJa from '../assets/flags/ja.png';
+import flagFr from '../assets/flags/fr.png'
 import flagDefault from '../assets/flags/default.png';
 
 export default {
@@ -16,9 +18,17 @@ export default {
         const flags = {
             en: flagEn,
             it: flagIT,
+            ja: flagJa,
+            fr: flagFr,
         };
          return flags[language] || flagDefault;
-    },
+      },
+
+      // Dividi il voto per 2 e arrotonda per eccesso
+      convertVote(vote) {
+        return Math.ceil(vote / 2);
+      },
+      
     }
 }
 
@@ -32,8 +42,15 @@ export default {
         <div class="description">
           <h2>TITOLO:{{ info.title }}</h2>
           <h2>TITOLO ORIGINALE:{{ info.original_title }}</h2>
+          <!-- flag della lingua -->
           <img :src="getFlag(info.original_language)" :alt="info.original_language" class="flag">
-          <h2>VOTO:{{ info.vote_average }}</h2>
+
+
+          <h2>VOTO: 
+                <span v-for="n in 5" :key="n">
+                    <i :class="n <= convertVote(info.vote_average) ? 'fas fa-star' : 'far fa-star'"></i>
+                </span>
+            </h2>
           <p>{{ info.overview }}</p>
         </div>
         <!-- <p>{{ info.overview }}</p> -->
