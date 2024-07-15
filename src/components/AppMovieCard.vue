@@ -1,4 +1,8 @@
 <script>
+import flagEn from '../assets/flags/en.png';
+import flagIT from '../assets/flags/it.png';
+import flagDefault from '../assets/flags/default.png';
+
 export default {
     name: 'AppMovieCard',
     props: {
@@ -7,7 +11,14 @@ export default {
     methods: {
         getPosterUrl(path) {
             return `https://image.tmdb.org/t/p/w342${path}`;
-        },
+      },
+       getFlag(language) {
+        const flags = {
+            en: flagEn,
+            it: flagIT,
+        };
+         return flags[language] || flagDefault;
+    },
     }
 }
 
@@ -17,9 +28,11 @@ export default {
     <div class="movie-card">
         <img :src="getPosterUrl(info.poster_path)" :alt="info.title" class="poster">
         <h1>{{info.title }}</h1>
+
         <div class="description">
           <h2>TITOLO:{{ info.title }}</h2>
           <h2>TITOLO ORIGINALE:{{ info.original_title }}</h2>
+          <img :src="getFlag(info.original_language)" :alt="info.original_language" class="flag">
           <h2>VOTO:{{ info.vote_average }}</h2>
           <p>{{ info.overview }}</p>
         </div>
@@ -71,6 +84,11 @@ export default {
 
   &:hover .description {
     opacity: 1;
+  }
+  .flag {
+    width: 80px;
+    height: 50px;
+    margin-top: 1rem;
   }
 }
 </style>
